@@ -3,6 +3,7 @@ package com.cydeo.day01;
 import com.cydeo.utility.SpartanTestbase;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -105,5 +106,41 @@ public class P04_MethodChaining extends SpartanTestbase {
 
     @Test
     public void pathParams() {
+
+        Response response =
+          given()
+                .accept(ContentType.JSON)
+                .pathParam("id", 5)
+                .log().uri().
+          when()
+                .get("/spartans/{id}").prettyPeek();
+
+
+
+        //status Code
+        System.out.println(response.statusCode());
+
+        //content Type json
+        System.out.println(response.contentType());
+
+        //ID is 5
+        int id=response.path("id");
+        Assertions.assertEquals(5, id);
+
+        // names is Blythe
+        String name=response.path("name");
+        Assertions.assertEquals("Blythe", name);
+
+        // gender is Female
+        String gender =response.path("gender");
+        Assertions.assertEquals("Female", gender);
+
+        // phone number is 3677539542
+        long phone=response.path("phone");
+        Assertions.assertEquals(3677539542l, phone);
+
+
+
+
     }
 }
