@@ -5,7 +5,9 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 
@@ -40,13 +42,17 @@ public class P04_MethodChaining extends SpartanTestbase {
     @Test
     public void queryParam() {
 
+        Map<String,String> queryMap=new HashMap<>();
+        queryMap.put("nameContains","e");
+        queryMap.put("gender","Female");
 
 
         Response response = given()
                 .accept(ContentType.JSON)
                 .log().uri()
-                .queryParam("nameContains","e")
-                .queryParam("gender", "Female").
+                .queryParams(queryMap).
+                //.queryParam("nameContains","e")
+                //.queryParam("gender", "Female").
         when()
                 .get("/spartans/search").prettyPeek();
 
@@ -68,7 +74,7 @@ public class P04_MethodChaining extends SpartanTestbase {
 
         System.out.println(response.path("content[-1].name").toString());
 
-        System.out.println("PRINT OUT  ");
+        System.out.println("PRINT OUT LAST 4   ");
 
         System.out.println(response.path("content.name[-4]").toString());
 
@@ -97,7 +103,7 @@ public class P04_MethodChaining extends SpartanTestbase {
      */
 
 
-
-
-
+    @Test
+    public void pathParams() {
+    }
 }
