@@ -31,15 +31,15 @@ public class P04_MethodChaining {
     /**
      *1- Given accept type is Json
      *2- Path Parameters values are
-     *     - id —> 11
+     *     - id —> 5
      *3- When user sends GET request to /spartans/{id}
      *5- Verify followings
      *     - Status code should be 200
      *     - Content Type is application/json
-     *     - ID is 11
-     *     - Name is "Meade"
-     *     - gender is "Male"
-     *     - phone is 3584128232
+     *     - ID is 5
+     *     - Name is "Blythe"
+     *     - gender is "Female"
+     *     - phone is 3677539542
      *
      */
 

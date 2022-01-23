@@ -175,6 +175,26 @@ then()      -----> ValidatableResponse
 
 - Here is the doc [link](http://hamcrest.org/JavaHamcrest/javadoc/2.2/org/hamcrest/Matchers.html)
 
+### Respanse.path() vs Response.JsonPath()
+
+- There are two ways to get the response and extract json data
+
+    - path("your jsonpath goes here") return type is T(generic) and decided by your variable data type you store
+      - int myId = response.path("id")
+
+    - There is a type(class) in RestAssured : JsonPath
+        - that have lots of methods to extract json body from the response like getInt getString getDouble getObject getList and so on.....
+        - In order to get JsonPath object out of response , we call a method called jsonPath() from the response
+  
+        - For example :
+          - JsonPath jp =  response.jsonPath("your acual path goes here")  ;
+          - jp.getInt()  jp.getLong() and so on
+
+        - The meaning of the word json path when we use in differnet places
+          - json path : -->> when inside the " " means the actual path to get the value (like xpath)
+          - JsonPath  : -->> the RestAssured class that have lots of methods
+          - jsonPath() : -->> the method of Response object to obtain JsonPath object out of response
+
 ### Questions
 
 1- What is difference between assert and verify ?
