@@ -1,8 +1,13 @@
 package com.cydeo.day02;
 
+import com.cydeo.utility.HrTestBase;
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
-public class P04_HamCrestMatchers {
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.Matchers.*;
+
+public class P04_HamCrestMatchers  extends HrTestBase {
 
     /*
       Given
@@ -22,5 +27,29 @@ public class P04_HamCrestMatchers {
 
     @Test
    public  void getAllRegions() {
+
+
+        given()
+                .accept(ContentType.JSON)
+                .log().uri().
+        when()
+                .get("/regions").prettyPeek().
+        then()
+                .statusCode(200)
+                .header("Date", notNullValue())
+                .body("items[0].region_name",is("Europe"))
+                .body("items[0].region_id",is(1))
+                .body("items.region_name", containsInRelativeOrder("Europe", "Americas", "Asia", "Middle East and Africa"))
+                .body("items",hasSize(4))
+        ;
+
+
+
+
+
+
+
+
+
     }
 }
