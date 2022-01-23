@@ -1,6 +1,9 @@
 package com.cydeo.day02;
 
-public class P01_Contains {
+import com.cydeo.utility.HrTestBase;
+import org.junit.jupiter.api.Test;
+
+public class P01_Contains extends HrTestBase {
 
     /*
        Given
@@ -13,4 +16,8 @@ public class P01_Contains {
                 response body contains   Americas
 
      */
+
+    @Test
+    void getOneRegion() {
+    }
 }
