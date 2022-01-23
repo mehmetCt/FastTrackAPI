@@ -43,7 +43,7 @@ public class P03_SpartanTest {
     @Test
     public void getAllSpartans() {
 
-        Response response = get("/spartans");
+        Response response = get("/spartans").prettyPeek();
 
         System.out.println(response.contentType());
         Assertions.assertEquals(ContentType.JSON.toString(), response.contentType());

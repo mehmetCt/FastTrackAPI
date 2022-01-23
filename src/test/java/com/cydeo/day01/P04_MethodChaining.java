@@ -1,8 +1,24 @@
 package com.cydeo.day01;
 
-public class P04_MethodChaining {
+import com.cydeo.utility.SpartanTestbase;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static io.restassured.RestAssured.*;
+
+public class P04_MethodChaining extends SpartanTestbase {
 
     // CREATE a SpartanTestBase instead of keep typing BeforeAll and AfterAll
+
+    @Test
+   public void methodChaining() {
+        String word="apple";
+        System.out.println(word.toUpperCase().toLowerCase().substring(2).replace("e", "t"));
+
+    }
 
 
     /**
@@ -21,12 +37,49 @@ public class P04_MethodChaining {
      * 5- Verify followings
      *     - Status code should be 200
      */
+    @Test
+    public void queryParam() {
 
 
 
+        Response response = given()
+                .accept(ContentType.JSON)
+                .log().uri()
+                .queryParam("nameContains","e")
+                .queryParam("gender", "Female").
+        when()
+                .get("/spartans/search").prettyPeek();
+
+        //get me totalElement Number
+        System.out.println(response.path("totalElement").toString());
+
+        //get me first SpartanName
+        System.out.println(response.path("content.name[0]").toString());
+
+        System.out.println(response.path("content[0].name").toString());
+
+        //get me second SpartanName
+        System.out.println(response.path("content.name[1]").toString());
+
+        System.out.println(response.path("content[1].name").toString());
+
+       // Get me last spartan name
+        System.out.println(response.path("content.name[-1]").toString());
+
+        System.out.println(response.path("content[-1].name").toString());
+
+        System.out.println("PRINT OUT  ");
+
+        System.out.println(response.path("content.name[-4]").toString());
+
+        System.out.println(response.path("content[-4].name").toString());
+
+        // Get me all Spartan Names
+        List<String> allNames = response.path("content.name");
+        System.out.println("allNames = " + allNames);
 
 
-
+    }
 
     /**
      *1- Given accept type is Json

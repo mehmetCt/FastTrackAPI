@@ -79,6 +79,7 @@ public class P01_SimpleGetRequest {
         Response response = RestAssured.get("http://34.192.175.227:1000/ords/hr/employees/100").prettyPeek();
 
 
+
         System.out.println(response.path("first_name").toString());
         System.out.println(response.path("last_name").toString());
 
