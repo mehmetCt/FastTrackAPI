@@ -61,4 +61,18 @@ public class P03_JsonPath extends HrTestBase {
 
 
     }
+          /*
+    Given
+             accept type is application/json
+     When
+             user sends get request to /employees
+     Then
+             response status code must be 200
+            get me all employees first_name who is making salary more than 15000
+
+  */
+
+    @Test
+    public void getAllEmployees() {
+    }
 }
