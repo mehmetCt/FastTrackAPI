@@ -75,11 +75,15 @@ public class P03_JsonPath extends HrTestBase {
     @Test
     public void getAllEmployees() {
 
-        JsonPath jsonPath = given()
+        Response response = given()
                 .accept(ContentType.JSON)
                 .log().uri().
                 when()
-                .get("/employees").prettyPeek().jsonPath();
+                .get("/employees").prettyPeek();
+
+        System.out.println(response.statusCode());
+
+        JsonPath jsonPath = response.jsonPath();
 
         List<String> list = jsonPath.getList("items.findAll {it.salary>15000}.first_name");
 
