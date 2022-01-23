@@ -10,7 +10,7 @@ Here is the [link](https://www.notion.so/FAST-TRACK-ab3382f75a044e0faa04816d28e7
 ##Day02
 Rest Assured  [link](https://rest-assured.io)
 
-JUnit5  [link](junit5)
+JUnit5  [link](https://junit.org/junit5/docs/current/user-guide/)
 
 - Today Plan
     - Simple Get Request
