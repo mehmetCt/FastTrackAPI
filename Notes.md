@@ -209,6 +209,47 @@ then()      -----> ValidatableResponse
 
 
 
+##Day04
+
+Add Dependecy for Serialization/Deserialization
+```xml
+<!--        For Serialization and De-Serialization -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.13.0</version>
+        </dependency>
+       
+        <!--        Lombok for pojo -->
+        <dependency>
+
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.22</version>
+
+        </dependency>
+```
+
+1. POST / PUT /  PATCH
+2. Serialization--> Converting from Java OBJECT To JSON
+3. Deserialization --> Converting from JSON To Java Object
+
+###POJO Class
+
+This class is meant to be blueprint for Creating Spartan pojo to represent json data with 3 fields name, gender, phone
+
+**`POJO`** : **Plain old java object , used to represent data**
+* Required part of POJO
+    * Encapsulated fields (private fields public getters and setters )
+    * No Arg Constructor
+* OPTIONALLY
+    * we will add all arg constructor for creating object in one shot
+    * toString method to view the printed result
+
+###Questions
+
+1. What are the collections you use to read the Json file and store?
+2. How can you convert from Json to Java Object and Java Object to Json?
 
 
 
