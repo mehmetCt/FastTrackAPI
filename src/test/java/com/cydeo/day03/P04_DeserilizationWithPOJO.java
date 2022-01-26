@@ -1,5 +1,6 @@
 package com.cydeo.day03;
 
+import com.cydeo.pojo.Location;
 import com.cydeo.utility.HrTestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -30,6 +31,12 @@ public class P04_DeserilizationWithPOJO extends HrTestBase {
 
         JsonPath jp = given().log().uri().
                 when().get("/locations").jsonPath();
+
+
+        List<Location> allLocations = jp.getList("items", Location.class);
+
+        System.out.println(allLocations);
+
 
 
     }
