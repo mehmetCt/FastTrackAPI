@@ -1,10 +1,17 @@
 package com.cydeo.day03;
 
+import com.cydeo.utility.HrTestBase;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+import java.util.Map;
+
 import static io.restassured.RestAssured.*;
 
 
-public class P03_DeserilizationWithMap {
+public class P03_DeserilizationWithMap extends HrTestBase {
 
     /**
      * Create a test called getLocation
@@ -26,6 +33,43 @@ public class P03_DeserilizationWithMap {
     @Test
     public void getAllLocations() {
 
+        JsonPath jp = given().log().uri().
+                when().get("/locations").jsonPath();
+
+        // items[0]
+        System.out.println("====== GET FIRST LOCATION  ======");
+        Map<String, Object> firstRowMap = jp.getMap("items[0]");
+        System.out.println(firstRowMap);
+
+        System.out.println("====== GET FIRST LOCATION FIRST LINK  ======");
+        Map<String, Object> firstLinks = jp.getMap("items[0].links[0]");
+        System.out.println(firstLinks.get("rel"));
+        System.out.println(firstLinks.get("href"));
+
+
+        System.out.println("====== GET ALL LOCATIONS AS LIST OF MAP======");
+        List<Map<String,Object>> allLocations = jp.getList("items");
+
+        System.out.println("====== FIRST LOCATION ======");
+        System.out.println(allLocations.get(0));
+
+
+        System.out.println("====== FIRST LOCATION ID ======");
+        System.out.println(allLocations.get(0).get("location_id"));
+
+        System.out.println("====== FIRST LOCATION COUNTRY_ID ======");
+        System.out.println(allLocations.get(0).get("country_id"));
+
+
+        System.out.println("====== GET FIRST LOCATION FIRST LINK  ====== ");
+        System.out.println(allLocations.get(0).get("links"));
+
+        List<Map<String,Object>>  links = (List<Map<String, Object>>) allLocations.get(0).get("links");
+        System.out.println(links.get(0).get("rel"));
+
+
+        System.out.println("====== LAST LOCATION ID ======");
+        System.out.println(allLocations.get(allLocations.size() - 1).get("location_id"));
 
 
     }
