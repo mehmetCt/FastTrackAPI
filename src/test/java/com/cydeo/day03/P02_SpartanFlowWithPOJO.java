@@ -51,12 +51,16 @@ public class P02_SpartanFlowWithPOJO extends SpartanTestbase {
     @Test
     public void getSpartan() {
 
-        given()
+        JsonPath jsonPath = given()
                 .pathParam("id", spartanID).
-        when()
+                when()
                 .get("/spartans/{id}").prettyPeek().
-        then()
+                then()
                 .statusCode(200)
-                .body("name", is("FastTrack POJO"));
+                .body("name", is("FastTrack POJO"))
+                .extract().jsonPath();
+
+
+        System.out.println(jsonPath.getString("gender"));
     }
 }
