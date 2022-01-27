@@ -254,6 +254,38 @@ This class is meant to be blueprint for Creating Spartan pojo to represent json 
 
 
 
+##Day05
+####Questions
+
+- What is difference between authentication and authorization ?
+
+
+
+#### Why developed a Rest API ?
+
+Application in my current projects needs to itegrated to other internal/external applications
+For integration our team developed it and I am testing it
+
+#### How do you test REST API ?
+
+- Read SWAGGER or docs
+- Use POSTMAN to test your endpoint manually
+- Use Rest Assured to test with automation
+    - I send PUT/POST/DELETE/GET request and verify status code , headers and body
+    - To verify I am using Hamcrest / JsonPath / POJO
+    - I am using Jackson  databind library to make serialization/deserialization
+
+
+#### USING TOKENS WITH REST API
+
+- So for all API endpoints that we practiced worked without tokens
+- In real project most likely you will need to get token to do actions in REST
+
+#### HOW DOES IT WORKS ?
+
+- Each doc has their own rule to get access in related API.
+- According to docs requirement we will send request to deicated endpoint for get token
+- After getting token we will use this in our request as Header - Authorization - Parameter
 
 
 
