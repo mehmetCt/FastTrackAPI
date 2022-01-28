@@ -41,9 +41,9 @@ public class P02_BookIT extends BookITTestBase {
 
         JsonPath jp = given().log().uri()
                 .header("Authorization", accessToken).
-                when()
+        when()
                 .get("/api/campuses").
-                then()
+        then()
                 .statusCode(200)
                 .extract().jsonPath();
 

@@ -1,10 +1,12 @@
 package com.cydeo.utility;
 
+import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
 public class APIUtils {
+
 
 
     public static String getTokenBookIT() {
@@ -20,4 +22,18 @@ public class APIUtils {
 
         return "Bearer "+accessToken;
     }
+
+    public static String getTokenLibrary() {
+
+       return  given().log().uri()
+                .contentType(ContentType.URLENC)
+                .formParam("email", "librarian47@library")
+                .formParam("password", "Sdet2022*").
+                when()
+                .post("/login").jsonPath().getString("token");
+
+    }
+
+
+
 }
