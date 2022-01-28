@@ -4,6 +4,7 @@ import com.cydeo.pojo.Location;
 import com.cydeo.utility.HrTestBase;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -20,7 +21,6 @@ public class P04_DeserilizationWithPOJO extends HrTestBase {
      * System.out.println("====== GET FIRST LOCATION  ======");
      * System.out.println("====== GET FIRST LOCATION LINKS POJO ======");
      * System.out.println("====== ALL LOCATIONS ======");
-     * System.out.println("====== FIRST LOCATION ======");
      * System.out.println("====== FIRST LOCATION ID ======");
      * System.out.println("====== FIRST LOCATION COUNTRY_ID ======");
      * System.out.println("====== GET FIRST LOCATION FIRST LINK  ====== ");
@@ -35,9 +35,26 @@ public class P04_DeserilizationWithPOJO extends HrTestBase {
 
         List<Location> allLocations = jp.getList("items", Location.class);
 
+
         System.out.println(allLocations);
 
+        System.out.println("====== GET FIRST LOCATION  ======");
+        System.out.println(allLocations.get(0));
 
+        System.out.println("====== GET FIRST LOCATION LINKS POJO ======");
+        System.out.println(allLocations.get(0).getLinks().get(0));
+
+        System.out.println("====== FIRST LOCATION ID ======");
+        System.out.println(allLocations.get(0).getLocationID());
+
+        System.out.println("====== FIRST LOCATION COUNTRY_ID ======");
+        System.out.println(allLocations.get(0).getCountryID());
+
+        System.out.println("====== GET FIRST LOCATION FIRST LINK REL INFORMATION  ====== ");
+        System.out.println(allLocations.get(0).getLinks().get(0).getRel());
+
+        System.out.println("====== LAST LOCATION ID ======");
+        System.out.println(allLocations.get(allLocations.size() - 1).getLocationID());
 
 
     }

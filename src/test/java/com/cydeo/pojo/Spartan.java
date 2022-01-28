@@ -2,7 +2,6 @@ package com.cydeo.pojo;
 
 public class Spartan {
 
-
     private String name;
 
     private String gender;

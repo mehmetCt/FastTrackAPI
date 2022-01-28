@@ -23,7 +23,8 @@ public class Location {
 
     private List<Link> links;
 
-
+    // What is the relation between link and location ? (  IS -A  vs HAS -A RelationShip  )
+    // Has a relationship
 
 
 }
