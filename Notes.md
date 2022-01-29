@@ -272,7 +272,7 @@ For integration our team developed it and I am testing it
 - Use POSTMAN to test your endpoint manually
 - Use Rest Assured to test with automation
     - I send PUT/POST/DELETE/GET request and verify status code , headers and body
-    - To verify I am using Hamcrest / JsonPath / POJO
+    - To verify I am using Response.path() / Hamcrest / JsonPath / POJO
     - I am using Jackson  databind library to make serialization/deserialization
 
 
@@ -286,6 +286,21 @@ For integration our team developed it and I am testing it
 - Each doc has their own rule to get access in related API.
 - According to docs requirement we will send request to deicated endpoint for get token
 - After getting token we will use this in our request as Header - Authorization - Parameter
+
+##Day06
+
+####JON Schema Validation
+It is a process to verify if json response matches with expected schema.
+I verify each key datatypes must exactly matches JSON vs SCHEMA  
+
+```xml
+<!--        RestAssured json schema dependency -->
+<dependency>
+  <groupId>io.rest-assured</groupId>
+  <artifactId>json-schema-validator</artifactId>
+  <version>4.4.0</version>
+</dependency>
+```
 
 
 
